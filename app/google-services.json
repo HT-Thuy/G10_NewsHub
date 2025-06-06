@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "178361399723",
+    "project_id": "newhub-555a6",
+    "storage_bucket": "newhub-555a6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178361399723:android:9d22f1c57f1199227e3aee",
+        "android_client_info": {
+          "package_name": "com.example.g10_newshub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUufuyXlRSbICnZWJPXKTeDmNEsWZAnXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
