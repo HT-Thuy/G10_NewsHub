@@ -45,6 +45,8 @@ dependencies {
     // Firebase SDKs
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-database")
+
 
     implementation(libs.credentials)
     implementation(libs.credentials.play.services.auth)

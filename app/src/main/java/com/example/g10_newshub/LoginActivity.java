@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
@@ -80,13 +82,34 @@ public class LoginActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    String uid = user.getUid();
+
+                    // Truy vấn vào Realtime Database để lấy role
+                    DatabaseReference userRef = FirebaseDatabase.getInstance()
+                            .getReference("users")
+                            .child(uid);
+
+                    userRef.child("role").get().addOnCompleteListener(roleTask -> {
+                        if (roleTask.isSuccessful() && roleTask.getResult().exists()) {
+                            String role = roleTask.getResult().getValue(String.class);
+
+                            if ("admin".equals(role)) {
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            } else if ("user".equals(role)) {
+                                startActivity(new Intent(LoginActivity.this, UserActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Unknown role: " + role, Toast.LENGTH_SHORT).show();
+                            }
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Failed to get role info", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             } else {
                 Toast.makeText(LoginActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
