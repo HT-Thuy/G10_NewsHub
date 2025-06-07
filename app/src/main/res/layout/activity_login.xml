@@ -32,13 +32,14 @@
 
         <!-- Name Input -->
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Name"
+            android:hint="Email"
             android:padding="12dp"
             android:background="@drawable/edittext_background"
             android:layout_marginBottom="12dp" />
+
 
         <!-- Password Input with icon -->
         <RelativeLayout
@@ -55,7 +56,7 @@
                 android:padding="12dp"
                 android:background="@drawable/edittext_background" />
 
-        <!--    <ImageView
+            <ImageView
                 android:id="@+id/ivTogglePassword"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -63,7 +64,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="12dp"
                 android:src="@drawable/ic_visibility_off"
-                android:contentDescription="Toggle password visibility" /> -->
+                android:contentDescription="Toggle password visibility" />
         </RelativeLayout>
 
         <!-- Forgot password as Button -->
@@ -92,26 +93,19 @@
             android:textColor="#FFFFFF"
             android:layout_marginBottom="24dp" />
 
-        <!-- Bottom Buttons -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have account?"
-            android:textSize="14sp"
-            android:textColor="#000000" />
 
         <Button
             android:id="@+id/btnCreateAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create new account"
-            android:textSize="14sp"
-            android:textColor="#D32F2F"
-            android:textStyle="bold"
+            android:layout_marginTop="4dp"
             android:background="@android:color/transparent"
-            android:padding="0dp"
-            android:minHeight="0dp"
             android:minWidth="0dp"
-            android:layout_marginTop="4dp"/>
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="Create new account"
+            android:textColor="#D32F2F"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </ScrollView>

@@ -3,80 +3,90 @@ package com.example.g10_newshub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText etName, etPassword;
-    private Button btnSignIn, btnForgotPassword, btnCreateAccount;
+    private EditText etEmail, etPassword;
+    private Button btnLogin, btnCreateAccount, btnForgotPassword;
+    private ImageView ivTogglePassword;
+    private boolean isPasswordVisible = false;
+
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         mAuth = FirebaseAuth.getInstance();
 
-        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
-
-        btnSignIn = findViewById(R.id.btnSignIn);
-        btnForgotPassword = findViewById(R.id.btnForgotPassword);
+        btnLogin = findViewById(R.id.btnSignIn);
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
+        ivTogglePassword = findViewById(R.id.ivTogglePassword);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Signin();
-            }
+        btnLogin.setOnClickListener(v -> loginUser());
+
+        btnForgotPassword = findViewById(R.id.btnForgotPassword);
+        btnForgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, EnterEmailActivity.class);
+            startActivity(intent);
         });
 
-        btnCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CreateAccount();
+        btnCreateAccount.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+        ivTogglePassword.setOnClickListener(v -> {
+            if (isPasswordVisible) {
+                etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                ivTogglePassword.setImageResource(R.drawable.ic_visibility_off);
+            } else {
+                etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                ivTogglePassword.setImageResource(R.drawable.ic_visibility);
             }
+            isPasswordVisible = !isPasswordVisible;
+            etPassword.setSelection(etPassword.getText().length());
         });
     }
-    private void Signin(){
-        String name, pass;
-        name = etName.getText().toString();
-        pass = etPassword.getText().toString();
-        if(TextUtils.isEmpty(name)){
-            Toast.makeText(this, "Please enter your Name", Toast.LENGTH_SHORT).show();
+
+    private void loginUser() {
+        String email = etEmail.getText().toString().trim();
+        String pass = etPassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter your Email", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(pass)){
+        if (TextUtils.isEmpty(pass)) {
             Toast.makeText(this, "Please enter your Password", Toast.LENGTH_SHORT).show();
             return;
         }
-        mAuth.signInWithEmailAndPassword(name, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
 
-                }else{
-                    Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_SHORT).show();
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user != null) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
+            } else {
+                Toast.makeText(LoginActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void CreateAccount(){
-        Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
-        startActivity(i);
     }
 }
