@@ -85,13 +85,14 @@
         <!-- Sign In Button -->
         <Button
             android:id="@+id/btnSignIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Sign In"
             android:textAllCaps="false"
-            android:backgroundTint="#D32F2F"
             android:textColor="#FFFFFF"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/button_rounded"/>
+
 
 
         <Button

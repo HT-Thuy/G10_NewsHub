@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#A6A3A3"
+    android:padding="10dp">
+
+    <!-- 📌 Guideline để căn đều các biểu tượng -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="386dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="124dp" /> <!-- Vị trí thứ hai -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="239dp" /> <!-- Vị trí thứ ba -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="341dp" /> <!-- Vị trí cuối cùng -->
+
+    <!-- 📌 Biểu tượng Account -->
+    <ImageButton
+        android:id="@+id/nav_account"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_avt"
+        android:contentDescription="Account"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@android:color/black"/>
+
+    <!-- 📌 Biểu tượng Article -->
+
+    <!-- 📌 Biểu tượng Dashboard -->
+    <ImageButton
+        android:id="@+id/nav_article"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="Article"
+        android:src="@drawable/ic_article"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:tint="@android:color/black" />
+
+    <ImageButton
+        android:id="@+id/nav_dashboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_dashboard"
+        android:contentDescription="Dashboard"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@android:color/black"/>
+
+    <!-- 📌 Biểu tượng Settings -->
+    <ImageButton
+        android:id="@+id/nav_setting"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_setting"
+        android:contentDescription="Settings"
+        app:layout_constraintStart_toStartOf="@id/guideline4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@android:color/black"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

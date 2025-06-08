@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--Đảm bảo màu nền đỏ -->
+    <solid android:color="#6A559E"/>
+
+    <!-- Bo góc-->
+    <corners android:radius="12dp"/>
+
+    <!-- Viền đen -->
+    <stroke android:width="2dp" android:color="#000000"/>
+</shape>

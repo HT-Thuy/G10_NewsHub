@@ -13,15 +13,17 @@
         android:theme="@style/Theme.G10_NewsHub"
         tools:targetApi="31">
 
+        <!-- 👇 Hoạt động chính -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
 
-
+        <!-- 👇 Đăng ký tài khoản -->
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
 
+        <!-- 👇 Đăng nhập -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -31,14 +33,21 @@
             </intent-filter>
         </activity>
 
+        <!-- 👇 Quên mật khẩu -->
         <activity
             android:name=".EnterEmailActivity"
             android:exported="true" />
 
-        <!-- 👇 Khai báo thêm activity dành cho người dùng -->
+        <!-- 👇 Giao diện dành cho người dùng thông thường -->
         <activity
             android:name=".UserActivity"
             android:exported="true" />
+
+        <!-- 👇 Giao diện quản lý dành cho admin -->
+        <activity
+            android:name=".AdminActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Hàng trên cùng: Logo + Menu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- 📌 Logo ứng dụng (bên trái) -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logoapp"
+            android:contentDescription="Logo ứng dụng"/>
+
+        <!-- 📌 Khoảng trống để đẩy Menu sang phải -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"/>
+
+        <!-- 📌 Biểu tượng Menu (bên phải) -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="Menu"
+            app:tint="@android:color/white"
+            android:background="@drawable/button_rounded"/>
+    </LinearLayout>
+
+    <!-- 📌 Hàng dưới: Tiêu đề + Avatar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A09F9F"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Account Management"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_avt"
+            android:contentDescription="Avatar"
+            android:paddingEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/dropdownArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_down"
+            android:contentDescription="Mũi tên xuống"/>
+    </LinearLayout>
+
+    <!-- 📌 Nút "Thêm Người Dùng" (bên phải) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="end">
+
+        <ImageButton
+            android:id="@+id/btnAddUser"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_add_user"
+            android:contentDescription="Thêm người dùng"
+            android:background="@drawable/button_rounded"
+            app:tint="@android:color/white"/>
+    </LinearLayout>
+    <!-- 📌 Tiêu đề bảng -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ID"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Name"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Email"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Action"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- Bảng danh sách người dùng -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"/>
+
+    <!-- Navbar từ layout -->
+    <include layout="@layout/bottom_nav_menu"/>
+</LinearLayout>

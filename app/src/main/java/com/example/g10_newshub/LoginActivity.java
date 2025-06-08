@@ -38,18 +38,16 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnSignIn);
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
         ivTogglePassword = findViewById(R.id.ivTogglePassword);
+        btnForgotPassword = findViewById(R.id.btnForgotPassword);
 
         btnLogin.setOnClickListener(v -> loginUser());
 
-        btnForgotPassword = findViewById(R.id.btnForgotPassword);
         btnForgotPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, EnterEmailActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LoginActivity.this, EnterEmailActivity.class));
         });
 
         btnCreateAccount.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });
 
         ivTogglePassword.setOnClickListener(v -> {
@@ -84,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     String uid = user.getUid();
 
-                    // Truy vấn vào Realtime Database để lấy role
+                    // Truy vấn vào Firebase để lấy vai trò người dùng
                     DatabaseReference userRef = FirebaseDatabase.getInstance()
                             .getReference("users")
                             .child(uid);
@@ -94,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                             String role = roleTask.getResult().getValue(String.class);
 
                             if ("admin".equals(role)) {
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity(new Intent(LoginActivity.this, AdminActivity.class)); // Chuyển sang AdminActivity
                             } else if ("user".equals(role)) {
                                 startActivity(new Intent(LoginActivity.this, UserActivity.class));
                             } else {
@@ -111,5 +109,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 }
