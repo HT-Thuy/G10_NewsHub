@@ -18,7 +18,6 @@ public class AuthRepository {
     public AuthRepository(Application application) {
         apiService = ApiClient.getClient().create(ApiService.class);
     }
-
     public LiveData<User> loginUser(String username, String password) {
         MutableLiveData<User> data = new MutableLiveData<>();
         apiService.loginUser(new LoginRequest(username, password)).enqueue(new Callback<User>() {
@@ -41,6 +40,24 @@ public class AuthRepository {
     public LiveData<User> registerUser(String username, String email, String password, String fullname) {
         MutableLiveData<User> data = new MutableLiveData<>();
         apiService.registerUser(new SignUpRequest(username, email, password, fullname)).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body());
+                } else {
+                    data.setValue(null);
+                }
+            }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                data.setValue(null);
+            }
+        });
+        return data;
+    }
+    public LiveData<User> getUserProfile(int userId) {
+        MutableLiveData<User> data = new MutableLiveData<>();
+        apiService.getUserProfile(userId).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {

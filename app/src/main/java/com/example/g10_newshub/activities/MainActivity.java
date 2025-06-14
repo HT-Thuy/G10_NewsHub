@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import com.example.g10_newshub.R;
 import com.example.g10_newshub.fragments.BookmarksFragment;
 import com.example.g10_newshub.fragments.HomeFragment;
+import com.example.g10_newshub.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
 
-        // Hiển thị fragment mặc định
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                 } else if (itemId == R.id.nav_bookmarks) {
                     selectedFragment = new BookmarksFragment();
-                } // Thêm các case khác cho Profile,...
+                } else if (itemId == R.id.nav_profile) {
+                    selectedFragment = new ProfileFragment();
+                }
 
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
