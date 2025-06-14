@@ -1,6 +1,7 @@
 package com.example.g10_newshub;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +22,14 @@ public class AdminActivity extends AppCompatActivity {
     private UserAdapter adapter;
     private List<User> userList;
     private DatabaseReference dbRef;
+    private ImageButton btnAddUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        //Khởi tạo RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -51,23 +54,17 @@ public class AdminActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         dbRef = FirebaseDatabase.getInstance().getReference("users");
 
-        // 📌 Lấy danh sách người dùng từ Firebase và cấp ID tự động
+        // Lấy danh sách người dùng từ Firebase
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userList.clear();
-                int maxId = 0;
-
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
                     if (user != null) {
                         userList.add(user);
-                        if (user.getAutoIncrementId() > maxId) {
-                            maxId = user.getAutoIncrementId();
-                        }
                     }
                 }
-
                 adapter.notifyDataSetChanged();
             }
 
@@ -76,25 +73,13 @@ public class AdminActivity extends AppCompatActivity {
                 Toast.makeText(AdminActivity.this, "Lỗi tải dữ liệu!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
-    // 📌 Hàm thêm người dùng với ID tự động tăng
-    private void addNewUser(String uid, String fullName, String email, String role) {
-        dbRef.orderByChild("autoIncrementId").limitToLast(1).get().addOnCompleteListener(task -> {
-            int newId = 1; // Mặc định nếu chưa có dữ liệu
-
-            if (task.isSuccessful() && task.getResult().exists()) {
-                for (DataSnapshot snapshot : task.getResult().getChildren()) {
-                    User lastUser = snapshot.getValue(User.class);
-                    if (lastUser != null) {
-                        newId = lastUser.getAutoIncrementId() + 1;
-                    }
-                }
-            }
-
-            User newUser = new User(newId, uid, fullName, email, role);
-            dbRef.child(uid).setValue(newUser);
-        });
+        // Bắt sự kiện khi nhấn vào nút "Thêm Người Dùng"
+        //btnAddUser = findViewById(R.id.btnAddUser);
+        //btnAddUser.setOnClickListener(v -> {
+        //    Intent intent = new Intent(AdminActivity.this, AddUserActivity.class);
+        //    startActivity(intent);
+        //});
     }
 
     private void deleteUser(User user) {

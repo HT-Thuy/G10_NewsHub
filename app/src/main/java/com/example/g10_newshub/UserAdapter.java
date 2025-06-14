@@ -20,7 +20,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         this.userList = userList;
         this.listener = listener;
 
-        // 📌 Sắp xếp danh sách theo ID tự động
+        // Sắp xếp danh sách theo ID tự động
         Collections.sort(userList, Comparator.comparingInt(User::getAutoIncrementId));
     }
 
@@ -34,7 +34,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(UserViewHolder holder, int position) {
         User user = userList.get(position);
 
-        // 📌 Hiển thị ID tự động trước Tên
+        //Hiển thị ID tự động trước Tên
         holder.tvUserId.setText(String.valueOf(user.getAutoIncrementId()));
         holder.tvUserName.setText(user.getFullName());
         holder.tvUserEmail.setText(user.getEmail());
