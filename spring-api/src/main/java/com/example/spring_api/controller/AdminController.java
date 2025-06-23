@@ -1,4 +1,5 @@
 package com.example.spring_api.controller;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.example.spring_api.model.User;
 import com.example.spring_api.repository.ArticleRepository;

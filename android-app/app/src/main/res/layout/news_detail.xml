@@ -12,7 +12,7 @@
         android:layout_height="220dp"
         android:foreground="@drawable/shadow_overlay"
         android:scaleType="centerCrop"
-        android:src="@drawable/news2" />
+        android:src="@drawable/business" />
 
     <ImageButton
         android:id="@+id/backButton"

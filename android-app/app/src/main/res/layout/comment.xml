@@ -105,7 +105,7 @@
             android:layout_width="44dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-            android:backgroundTint="#648DDB"
+            android:backgroundTint="#F44336"
             android:layout_marginTop="3dp"
             android:contentDescription="Send comment"
             android:paddingLeft="12dp"

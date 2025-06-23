@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:contentDescription="Logo"
-            android:src="@drawable/logo_news" />
+            android:src="@drawable/logoapp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#648DDB"
+            android:backgroundTint="#F44336"
             android:text="Continue"
             android:textColor="#FFFFFF"
             android:textSize="12sp"

@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:contentDescription="Logo"
-            android:src="@drawable/logo_news" />
+            android:src="@drawable/logoapp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,10 +61,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
-            android:layout_width="match_parent"
+            android:layout_width="154dp"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#648DDB"
+            android:backgroundTint="#F44336"
             android:text="Sign In"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
