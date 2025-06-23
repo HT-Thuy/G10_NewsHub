@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main_layout.html}">
+
+<head>
+    <title>NewsWatch - Article Management</title>
+    <link th:href="@{/css/articles_management/style.css}" rel="stylesheet">
+</head>
+
+<body class="body-page">
+    <!-- Main Content -->
+    <div class="home-body m-4" layout:fragment="content">
+        <div class="content">
+            <div class="title-page mb-4 d-flex justify-content-between">
+                <h2>Article Management</h2>
+                <a href="/admin/articles_management/add_news" class="btn btn-add-view d-flex align-items-center"><i
+                        class="fa-solid fa-circle-plus me-2"></i> Add Article</a>
+            </div>
+            <table id="articleTable" class="table table-hover pt-3">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Post Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <th:block th:each="article : ${articles}">
+                    <tr>
+                        <td th:text="${article.id}"></td>
+                        <td><img th:src="@{'../../' + ${article.image}}" alt="Article Image" width="100"></td>
+                        <td th:text="${article.title}"></td>
+                        <td th:text="${article.categoryName}"></td>
+                        <td th:text="${article.createAt}"></td>
+                        <td>
+                            <a th:href="@{/admin/articles_management/detail_news(id=${article.id})}"
+                                class="btn text-success p-0">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+                            <a th:href="@{/admin/articles_management/edit_news/{id}(id=${article.id})}"
+                                class="btn text-primary p-0">
+                                <i class='bx bx-edit-alt'></i>
+                            </a>
+                            <form th:action="@{'/admin/articles_management/delete/' + ${article.id}}" method="post"
+                                style="display:inline;"
+                                onsubmit="return confirm('Are you sure you want to delete this article?');">
+                                <button type="submit" class="btn text-danger p-0 border-0 bg-transparent">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+    </div>
+</body>
+
+<!-- Khởi tạo DataTable -->
+<div layout:fragment="script" th:inline="none">
+    <script>
+        $(document).ready(function () {
+            $('#articleTable').DataTable({
+                "paging": true,       // Bật phân trang
+                "searching": true,    // Bật tìm kiếm
+                "ordering": true,     // Cho phép sắp xếp cột
+                "info": true,         // Hiển thị số lượng dữ liệu
+                "lengthMenu": [5, 10, 25, 50, 100], // Số dòng hiển thị mỗi trang
+                "columnDefs": [
+                    { "orderable": false, "targets": [1, 2, 3, 5] } // Không sắp xếp cột
+                ],
+                "order": [[0, "asc"]], // Mặc định sắp xếp cột ID tăng dần
+            });
+        });
+    </script>
+</div>
+
+</html>

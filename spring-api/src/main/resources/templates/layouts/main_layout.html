@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsWatch - Dashboard</title>
+
+    <!-- css - dung chung -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+</head>
+
+<body class="body-page">
+    <!-- Sidebar -->
+    <nav class="sidebar active d-flex flex-column" id="sidebar">
+        <div class="sidebar-content d-flex flex-column h-100">
+            <div class="logo-img text-center">
+                <a href="/admin/dashboard">
+                    <img src="../../images/logo.jpg" alt="NewsWatch"
+                        style="width: 190px; height: 50px; object-fit: fill;">
+                </a>
+            </div>
+            <ul class="navbar-nav flex-column w-100 fw-bold flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activePage == 'dashboard' ? ' active' : ''}"
+                        href="/admin/dashboard">
+                        <i class='bx bxs-dashboard'></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activePage == 'account_management' ? ' active' : ''}"
+                        href="/admin/account_management">
+                        <i class="fa-regular fa-user"></i> Account Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activePage == 'articles_management' ? ' active' : ''}"
+                        href="/admin/articles_management">
+                        <i class="fas fa-newspaper"></i> Articles Management
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activePage == 'category_management' ? ' active' : ''}"
+                        href="/admin/category_management">
+                        <i class="fas fa-list"></i> Category Management
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm px-3">
+            <button class="btn btn-menu" id="menu-toggle"><i class="fas fa-bars"></i></button>
+            <div class="ms-auto profile dropdown">
+                <button class="btn profile-btn" id="accountDropdown" data-bs-toggle="dropdown">
+                    <img th:src="@{'../../' + ${session.image}}" alt="avatar" class="rounded-circle" width="30">
+                    <span th:text="${session.username}">Admin</span>
+                </button>
+            
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="/admin/admin_infomation"><i class='bx bx-info-square'></i> Profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item text-danger" href="/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </nav>
+
+        <div class="home-body m-4" layout:fragment="content">
+
+        </div>
+    </div>
+</body>
+
+<!-- Dung chung -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<!-- Scripts dùng riêng cho từng page -->
+<div layout:fragment="script"></div>
+
+<!-- Custom Script -->
+<script th:src="@{/js/layout.js}"></script>
+
+</html>

@@ -1,0 +1,175 @@
+/* -----------------------Articles_management------------------------ */
+
+form .btn-save,
+.page-content .content .title-page .btn-add-view {
+    height: 35px;
+    padding: 0 12px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    background: rgba(99, 88, 220, 0.80);
+    color: #fff;
+    font-weight: 600;
+}
+
+form .btn-save:hover,
+.page-content .content .title-page .btn-add-view:hover {
+    opacity: 0.9;
+}
+
+#articleTable td,
+#articleTable th {
+    font-size: 16px;
+    max-width: 150px;
+    /* Điều chỉnh độ rộng tối đa */
+    white-space: nowrap;
+    /* Ngăn nội dung xuống dòng */
+    overflow: hidden;
+    /* Ẩn nội dung bị tràn */
+    text-overflow: ellipsis;
+    /* Thêm dấu "..." khi bị cắt */
+}
+
+#articleTable td button {
+    font-size: 17px;
+}
+
+#articleTable td button:hover {
+    opacity: 0.9;
+}
+
+
+/* --------------------------Add, Edit-------------------------- */
+.upload-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 8px;
+    border: 2px dashed #6358DC;
+    background: rgba(99, 88, 220, 0.10);
+    width: 100%;
+    min-height: 200px;
+    cursor: pointer;
+}
+
+.upload-image button {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 16px;
+    border-radius: 5px;
+    border: none;
+    background: #6358DC;
+}
+
+/* Hiệu ứng khi kéo thả */
+.upload-image.drag-over {
+    background: rgba(70, 56, 228, 0.2);
+    border-color: #4436B0;
+}
+
+/* Khu vực hiển thị ảnh */
+.image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+/* Ảnh preview */
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Khu vực hiển thị ảnh */
+.image-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Ảnh bên trong */
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview-wrapper .remove-img {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    border: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ------------------------------Details--------------------------- */
+content {
+    width: 100%;
+}
+
+.page-content .content .title {
+    font-size: 34px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.calendar-and-category {
+    display: flex;
+    width: 100%;
+    padding-bottom: 20px;
+    gap: 12px;
+}
+
+.calendar-and-category button {
+    width: 120px;
+    padding: 3px 10px;
+    font-weight: 600;
+    font-size: 14px;
+    background: #6989d1;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+}
+
+.calendar-and-category button:hover {
+    opacity: 0.9;
+}
+
+
+.calendar-and-category p {
+    margin: 0;
+    color: rgba(46, 47, 65, 0.80);
+    font-feature-settings: 'case' on;
+    font-family: "Source Sans Pro";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .img-detail {
+    width: 600px;
+    height: 450px;
+}
+
+.img-banner {
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+/* -----------------------admin_information-------------------- */
+
+/* Avatar */
+.avatar {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.avatar img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-upload {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #007bff;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.avatar-upload i {
+    font-size: 14px;
+}
+
+.btn-info-save{
+    background-color: #6358DC;
+    color: #fff;
+}
+
+.btn-info-save:hover{
+    opacity: 0.9;
+    color: #fff;
+}
+

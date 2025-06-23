@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main_layout.html}">
+
+<head>
+    <title>NewsWatch - Article Management</title>
+    <link th:href="@{/css/articles_management/style.css}" rel="stylesheet">
+</head>
+
+<body class="body-page">
+    <!-- Main Content -->
+    <div class="home-body m-4" layout:fragment="content">
+        <div class="content mt-4">
+            <div class="title-page mb-4 d-flex justify-content-between">
+                <h2>New Article</h2>
+            </div>
+            <form action="/admin/articles_management/add_news" method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" name="title" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category" id="select-category" required>
+                            <option value="">Select Category</option>
+                            <th:block th:each="category : ${categories}">
+                                <option th:value="${category.id}" th:text="${category.categoryName}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="col-md-12 w-100" id="dropArea">
+                        <input type="file" id="upload" name="image" accept=".jpg, .webp, .png, .jpeg" hidden required>
+                        <label for="upload" class="upload-image uploadLabel" id="uploadLabel">
+                            <i class='bx bx-cloud-upload' style="font-size: 32px; color: #6658DC;"></i>
+                            <h5>Upload Image Banner For Article</h5>
+                            <p class="text-secondary">Format: .jpg, .webp, .png, .jpeg & Max file size: 25 MB</p>
+                            <button type="button" id="browseBtn">Browse Files</button>
+                        </label>
+                    </div>
+            
+                    <!-- Khu vực hiển thị ảnh -->
+                    <div class="image-preview-container" id="imagePreviewContainer"></div>
+            
+                    <div class="col-md-12">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="8" style="resize: none;" name="description" required></textarea>
+                    </div>
+            
+                    <!-- Button Group -->
+                    <div class="col-12 d-flex justify-content-end mt-3">
+                        <button type="submit" class="btn btn-save me-2">Save</button>
+                        <a th:href="@{/admin/articles_management}" class="btn btn-secondary fw-bolder">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<!-- Custom Script -->
+<div layout:fragment="script" th:inline="none">
+    <script>
+        // Js Ảnh
+        const dropArea = document.getElementById("dropArea");
+        const fileInput = document.getElementById("upload");
+        const imgPreview = document.getElementById("imagePreviewContainer");
+        const btnInput = document.getElementById("browseBtn");
+
+        //Chọn bằng input
+        fileInput.addEventListener("change", function (event) {
+            handleFiles(event.target.files);
+        })
+
+        btnInput.addEventListener("click", function () {
+            document.getElementById("upload").click();
+        })
+
+        // Kéo thả
+        dropArea.addEventListener("dragover", function (event) {
+            event.preventDefault();
+            dropArea.classList.add("drag-over");
+        });
+
+        dropArea.addEventListener("dragleave", function () {
+            dropArea.classList.remove("drag-over");
+        });
+
+        dropArea.addEventListener("drop", function (event) {
+            event.preventDefault();
+            dropArea.classList.remove("drag-over");
+            handleFiles(event.dataTransfer.files);
+        });
+
+        function handleFiles(files) {
+            for (let file of files) {
+                if (file.type.startsWith("image/")) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        // Bọc ảnh trong một div chứa cả nút xóa
+                        const wrapper = document.createElement("div");
+                        wrapper.classList.add("image-preview-wrapper");
+
+                        const imageWrapper = document.createElement("div");
+                        imageWrapper.classList.add("image-preview");
+
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+
+                        const removeBtn = document.createElement("button");
+                        removeBtn.innerHTML = "✕";
+                        removeBtn.classList.add("remove-img");
+                        removeBtn.addEventListener("click", function () {
+                            imagePreviewContainer.removeChild(wrapper);
+                        });
+
+                        imageWrapper.appendChild(img);
+                        wrapper.appendChild(imageWrapper);
+                        wrapper.appendChild(removeBtn);
+                        imagePreviewContainer.appendChild(wrapper);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+    </script>
+</div>
+
+</html>

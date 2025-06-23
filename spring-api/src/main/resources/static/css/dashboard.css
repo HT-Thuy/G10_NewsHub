@@ -1,0 +1,75 @@
+/* Sidebar -- chung */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: fixed;
+    left: -260px;
+    width: 260px;
+    height: 100vh;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+    border-right: 1px solid #C8CBD9;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar .nav-link {
+    padding: 10px 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.sidebar .nav-link.active {
+    background-color: #6358DC;
+    color: #fff;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #6358DC;
+    color: #fff;
+}
+
+.logo-img {
+    padding: 20px 0;
+}
+
+.page-content {
+    transition: margin-left 0.3s ease;
+}
+
+.page-content .navbar {
+    border-bottom: 1px solid #C8CBD9;
+}
+
+.page-content .btn-menu {
+    font-size: 20px;
+    color: #786FE5;
+}
+
+.sidebar.active+.page-content {
+    margin-left: 260px;
+}
+
+.category-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+  
+.category-list li:last-child {
+    border-bottom: none;
+}

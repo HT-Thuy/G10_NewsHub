@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main_layout.html}">
+
+<head>
+    <title>NewsWatch - Category Management</title>
+    <link th:href="@{/css/category_management/style.css}" rel="stylesheet">
+</head>
+
+<body class="body-page">
+    <div class="home-body m-4" layout:fragment="content">
+        <!-- Main Content -->
+        <div class="content mt-4">
+            <div class="title-page mb-4 d-flex justify-content-between">
+                <h2>Edit Category</h2>
+            </div>
+            <form th:action="@{/admin/category_management/edit_category/{id}(id=${category.id})}" method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Category Name</label>
+                        <input type="text" class="form-control" name="categoryName" th:value="${category.categoryName}" required>
+                    </div>
+                    <div class="col-md-12 w-100" id="dropArea">
+                        <input type="file" name="image" id="upload" accept=".jpg, .webp, .png, .jpeg" hidden multiple required>
+                        <label for="upload" class="upload-image uploadLabel" id="uploadLabel">
+                            <i class='bx bx-cloud-upload' style="font-size: 32px; color: #6658DC;"></i>
+                            <h5>Upload Image Banner For Article</h5>
+                            <p class="text-secondary">Format: .jpg, .webp, .png, .jpeg & Max file size: 25 MB</p>
+                            <button type="button" id="browseBtn">Browse Files</button>
+                        </label>
+                    </div>
+
+                    <div class="image-preview-container" id="imagePreviewContainer"></div>
+
+                    <div class="col-12 d-flex justify-content-end mt-3">
+                        <button type="submit" class="btn btn-save me-2">Save</button>
+                        <a th:href="@{/admin/articles_management}" class="btn btn-secondary fw-bolder">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<!-- Custom Script -->
+<div layout:fragment="script">
+    <script>
+        // Js Ảnh
+        const dropArea = document.getElementById("dropArea");
+        const fileInput = document.getElementById("upload");
+        const imgPreview = document.getElementById("imagePreviewContainer");
+        const btnInput = document.getElementById("browseBtn");
+
+        //Chọn bằng input
+        fileInput.addEventListener("change", function (event) {
+            handleFiles(event.target.files);
+        })
+
+        btnInput.addEventListener("click", function () {
+            document.getElementById("upload").click();
+        })
+
+        // Kéo thả
+        dropArea.addEventListener("dragover", function (event) {
+            event.preventDefault();
+            dropArea.classList.add("drag-over");
+        });
+
+        dropArea.addEventListener("dragleave", function () {
+            dropArea.classList.remove("drag-over");
+        });
+
+        dropArea.addEventListener("drop", function (event) {
+            event.preventDefault();
+            dropArea.classList.remove("drag-over");
+            handleFiles(event.dataTransfer.files);
+        });
+
+        function handleFiles(files) {
+            for (let file of files) {
+                if (file.type.startsWith("image/")) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const wrapper = document.createElement("div");
+                        wrapper.classList.add("image-preview-wrapper");
+
+                        const imageWrapper = document.createElement("div");
+                        imageWrapper.classList.add("image-preview");
+
+                        const img = document.createElement("img");
+                        img.src = e.target.result;
+
+                        const removeBtn = document.createElement("button");
+                        removeBtn.innerHTML = "✕";
+                        removeBtn.classList.add("remove-img");
+                        removeBtn.addEventListener("click", function () {
+                            imagePreviewContainer.removeChild(wrapper);
+                        });
+
+                        imageWrapper.appendChild(img);
+                        wrapper.appendChild(imageWrapper);
+                        wrapper.appendChild(removeBtn);
+                        imagePreviewContainer.appendChild(wrapper);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+    </script>
+</div>
+
+</html>

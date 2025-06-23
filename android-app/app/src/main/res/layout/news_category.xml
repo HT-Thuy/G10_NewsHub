@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/newsCategory"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:contentDescription="Back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/categoriesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Sports"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerLayout"
+        android:background="@drawable/custom_edittext"
+        android:padding="8dp"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/searchIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Search Icon"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@id/filterIcon"
+            android:layout_toEndOf="@id/searchIcon"
+            android:background="@null"
+            android:hint="Search..."
+            android:minHeight="38dp"
+            android:padding="0dp"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/filterIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Filter Icon"
+            android:src="@drawable/sort" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/newsListView"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:layout_below="@id/searchContainer"
+        android:layout_marginTop="8dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+    <RelativeLayout
+        android:id="@+id/noResultsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchContainer"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/noResultsImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:contentDescription="No Results Found Image"
+            android:src="@drawable/noresultsearch" />
+
+        <TextView
+            android:id="@+id/noResultsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noResultsImage"
+            android:layout_centerHorizontal="true"
+            android:text="No results found"
+            android:textColor="#B0B0B0"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/noResultsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noResultsTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="Try searching with different keywords."
+            android:textColor="#A0A0A0"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

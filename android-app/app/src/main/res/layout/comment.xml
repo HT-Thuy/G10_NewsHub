@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/comment">
+
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:contentDescription="Back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/categoriesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Comment"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listComment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:padding="8dp" />
+
+    <RelativeLayout
+        android:id="@+id/noResultsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/noResultsImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:contentDescription="No Comment"
+            android:src="@drawable/nocomment" />
+
+        <TextView
+            android:id="@+id/noResultsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noResultsImage"
+            android:layout_centerHorizontal="true"
+            android:text="No comments available"
+            android:textColor="#B0B0B0"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/noResultsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noResultsTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text="Add your comment below!"
+            android:textColor="#A0A0A0"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/addComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/etComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/custom_edittext"
+            android:hint="Type your comment"
+            android:padding="12dp"
+            android:textSize="14dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSend"
+            android:layout_width="44dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#F44336"
+            android:layout_marginTop="3dp"
+            android:contentDescription="Send comment"
+            android:paddingLeft="12dp"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/send"
+            app:iconSize="20dp"
+            app:iconTint="#FFFFFF" />
+    </LinearLayout>
+
+</LinearLayout>

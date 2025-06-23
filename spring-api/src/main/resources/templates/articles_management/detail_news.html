@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main_layout.html}">
+
+<head>
+    <title>NewsWatch - Article Management</title>
+    <link th:href="@{/css/articles_management/style.css}" rel="stylesheet">
+</head>
+
+<body class="body-page">
+    <!-- Main Content -->
+    <div class="home-body m-4" layout:fragment="content">
+        <div class="content">
+            <h3 class="title" th:text="${article.title}"></h3>
+            <div class="calendar-and-category">
+                <button class="btn-category" th:text="${article.categoryName}"></button>
+                <p><i class='bx bx-calendar'></i> <span th:text="${article.createAt}"></span></p>
+            </div>
+            <div class="img-banner">
+                <img th:src="@{'../../' + ${article.image}}" class="img-detail img-fluid" alt="Article Image">
+            </div>
+            <p class="content mt-3" th:text="${article.content}"></p>
+        </div>
+    </div>
+</body>
+
+</html>
