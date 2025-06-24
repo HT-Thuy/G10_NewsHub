@@ -6,7 +6,7 @@ form .btn-save,
     padding: 0 12px;
     flex-shrink: 0;
     border-radius: 3px;
-    background: rgba(99, 88, 220, 0.80);
+    background: rgb(226, 11, 44);
     color: #fff;
     font-weight: 600;
 }
@@ -58,7 +58,7 @@ form .btn-save:hover,
     padding: 4px 16px;
     border-radius: 5px;
     border: none;
-    background: #6358DC;
+    background: #e20b2c;
 }
 
 /* Hiệu ứng khi kéo thả */

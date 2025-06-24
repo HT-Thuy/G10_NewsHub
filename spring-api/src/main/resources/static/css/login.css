@@ -1,5 +1,5 @@
 body {
-    background: #CDDEFF;
+    background: #fbb2bb;
 }
 
 .from-login {
@@ -24,7 +24,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #6358DC !important;
+    background-color: #e20b2c !important;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;

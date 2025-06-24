@@ -18,7 +18,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #007bff;
+    background: #e20b2c;
     color: white;
     width: 30px;
     height: 30px;
@@ -34,7 +34,7 @@
 }
 
 .btn-info-save{
-    background-color: #6358DC;
+    background-color: #e20b2c;
     color: #fff;
 }
 

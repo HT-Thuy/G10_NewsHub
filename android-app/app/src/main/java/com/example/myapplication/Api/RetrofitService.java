@@ -31,7 +31,7 @@ public class RetrofitService {
                 .addInterceptor(new BasicAuthInterceptor(username, password))
                 .build();
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.147:8080/api/")
+                .baseUrl("http://192.168.0.105:8080/api/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();

@@ -6,7 +6,7 @@ form .btn-save,
     padding: 0 12px;
     flex-shrink: 0;
     border-radius: 3px;
-    background: rgba(99, 88, 220, 0.80);
+    background: rgb(226, 11, 44);
     color: #fff;
     font-weight: 600;
 }
@@ -48,7 +48,7 @@ form .btn-save:hover,
     text-align: center;
     padding: 40px 20px;
     border-radius: 8px;
-    border: 2px dashed #6358DC;
+    border: 2px dashed #6358dc;
     background: rgba(99, 88, 220, 0.10);
     width: 100%;
     min-height: 200px;
@@ -62,13 +62,13 @@ form .btn-save:hover,
     padding: 4px 16px;
     border-radius: 5px;
     border: none;
-    background: #6358DC;
+    background: #e20b2c;
 }
 
 /* Hiệu ứng khi kéo thả */
 .upload-image.drag-over {
-    background: rgba(70, 56, 228, 0.2);
-    border-color: #4436B0;
+    border: 2px dashed #6358dc;
+    background: rgba(99, 88, 220, 0.10);
 }
 
 /* Khu vực hiển thị ảnh */
@@ -140,7 +140,7 @@ content {
     padding: 3px 10px;
     font-weight: 600;
     font-size: 14px;
-    background: #6989d1;
+    background: #e20b2c;
     color: #FFF;
     border: none;
     border-radius: 5px;

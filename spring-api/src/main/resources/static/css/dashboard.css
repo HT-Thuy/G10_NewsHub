@@ -35,12 +35,12 @@ body {
 }
 
 .sidebar .nav-link.active {
-    background-color: #6358DC;
+    background-color: #e20b2c;
     color: #fff;
 }
 
 .sidebar .nav-link:hover {
-    background-color: #6358DC;
+    background-color: #e20b2c;
     color: #fff;
 }
 
@@ -58,7 +58,7 @@ body {
 
 .page-content .btn-menu {
     font-size: 20px;
-    color: #786FE5;
+    color: #e20b2c;
 }
 
 .sidebar.active+.page-content {
