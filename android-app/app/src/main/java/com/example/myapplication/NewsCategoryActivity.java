@@ -30,20 +30,28 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsCategoryActivity extends AppCompatActivity {
-    private TextView categoriesTitle;
-    private ListView newsListView;
-    private EditText searchBox;
-    private ImageView filterIcon;
-    private List<Article> articleList = new ArrayList<>();
-    private boolean isSortedAscending = true;
-    private ArticleAdapter articleAdapter;
-    private ImageButton backButton;
+/**
+// * NewsCategoryActivity hiển thị danh sách bài viết theo chuyên mục.
+ * - Có chức năng lọc bài theo tiêu đề
+ * - Có chức năng sắp xếp theo ngày
+ */
+
+
+public class NewsCategoryActivity extends AppCompatActivity {  //Đây là một Activity con, kế thừa từ AppCompatActivity.
+    private TextView categoriesTitle;  //categoriesTitle: Hiển thị tên danh mục.
+    private ListView newsListView;    //newsListView: Danh sách bài viết.
+    private EditText searchBox;  //searchBox: Ô tìm kiếm.
+    private ImageView filterIcon;   //filterIcon: Nút lọc (sắp xếp).
+    private List<Article> articleList = new ArrayList<>();  //articleList: Danh sách các bài viết.
+    private boolean isSortedAscending = true;  //isSortedAscending: Biến cờ để biết đang sắp xếp theo thứ tự tăng hay giảm.
+    private ArticleAdapter articleAdapter;  //articleAdapter: Adapter cho ListView.
+    private ImageButton backButton;  //backButton: Nút quay lại.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_category);
 
+        // Cập nhật khoảng cách theo hệ thống (status bar, navigation bar)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.newsCategory), (v, insets) -> {
             WindowInsetsCompat insetsCompat = insets;
             int systemBars = WindowInsetsCompat.Type.systemBars();
