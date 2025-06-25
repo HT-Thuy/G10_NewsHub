@@ -47,8 +47,14 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
         holder.txtText.setText(article.getTitle());
         holder.txtCate.setText(article.getCategoryName());
 
+        // --- SỬA LẠI PHẦN TẢI ẢNH Ở ĐÂY ---
+        // 1. Dùng địa chỉ IP đúng cho máy ảo
+        // 2. Thêm giao thức "http://" vào đầu
+        String baseUrl = "http://10.0.2.2:8080/";
+        String fullImageUrl = baseUrl + article.getImage();
+
         Glide.with(context)
-                .load("http://192.168.2.13:8080/" + article.getImage())
+                .load(fullImageUrl) // Sử dụng URL đã được sửa lại
                 .placeholder(R.drawable.placeholder)
                 .into(holder.imageView);
 
