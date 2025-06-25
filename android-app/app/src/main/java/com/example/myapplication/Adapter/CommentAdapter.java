@@ -59,8 +59,11 @@ public class CommentAdapter extends BaseAdapter {
         holder.tvContent.setText(comment.getContent());
         holder.tvCreateAt.setText(dateFormat.format(comment.getCreateAt()));
 
+        String baseUrl = "http://10.0.2.2:8080/";
+        String fullImageUrl = baseUrl + comment.getUser().getImage();
+
         Glide.with(context)
-                .load("http://192.168.2.13:8080/" + comment.getUser().getImage())
+                .load(fullImageUrl) 
                 .placeholder(R.drawable.avatar)
                 .circleCrop()
                 .into(holder.imgAvatar);
