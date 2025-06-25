@@ -61,7 +61,13 @@ public class CategoryAdapter extends BaseAdapter {
 
         Category category = categoryList.get(position);
         holder.categoryName.setText(category.getCategoryName());
-        Glide.with(context).load("http://192.168.2.13:8080/" + category.getImage()).placeholder(R.drawable.placeholder).into(holder.categoryImage);
+
+        String baseUrl = "http://10.0.2.2:8080/";
+        String fullImageUrl = baseUrl + category.getImage();
+        Glide.with(context)
+                .load(fullImageUrl) 
+                .placeholder(R.drawable.placeholder)
+                .into(holder.categoryImage);
 
         apiService.getArticleCount(category.getId()).enqueue(new Callback<Integer>() {
             @Override
@@ -70,7 +76,7 @@ public class CategoryAdapter extends BaseAdapter {
                     holder.articleCount.setText(response.body() + " Articles");
                 }
             }
-            @Override
+@Override
             public void onFailure(Call<Integer> call, Throwable t) {
                 holder.articleCount.setText("0 Articles");
             }
