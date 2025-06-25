@@ -69,8 +69,11 @@ public class ArticleAdapter extends BaseAdapter {
         }
         holder.newsDate.setText(dateFormat.format(article.getCreateAt()));
 
+        String baseUrl = "http://10.0.2.2:8080/";
+        String fullImageUrl = baseUrl + article.getImage();
+
         Glide.with(context)
-                .load("http://192.168.2.13:8080/" + article.getImage())
+                .load(fullImageUrl) // Sử dụng URL đã sửa
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder)
                 .into(holder.newsImage);
