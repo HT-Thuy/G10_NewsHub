@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 14, 2025 at 07:20 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,11 +60,11 @@ CREATE TABLE `bookmark` (
 --
 
 INSERT INTO `bookmark` (`id`, `user_id`, `article_id`, `create_at`) VALUES
-(11, 3, 5, '2025-04-09'),
-(17, 4, 3, '2025-04-10'),
-(26, 4, 4, '2025-04-11'),
-(33, 3, 3, '2025-04-12'),
-(42, 16, 3, '2025-04-14');
+(11, 3, 5, '2025-06-09'),
+(17, 4, 3, '2025-06-10'),
+(26, 4, 4, '2025-06-11'),
+(33, 3, 3, '2025-06-12'),
+(42, 16, 3, '2025-06-14');
 
 -- --------------------------------------------------------
 
@@ -91,10 +84,10 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `category_name`, `image`, `create_at`) VALUES
-(1, 'Technology', 'images/category/technology.jpg', '2025-04-01'),
-(2, 'Education', 'images/category/education.jpg', '2025-04-01'),
-(3, 'Environment', 'images/category/environment.jpg', '2025-04-04'),
-(4, 'Sports', 'images/category/sports.jpg', '2025-04-02');
+(1, 'Technology', 'images/category/technology.jpg', '2025-06-01'),
+(2, 'Education', 'images/category/education.jpg', '2025-06-01'),
+(3, 'Environment', 'images/category/environment.jpg', '2025-06-04'),
+(4, 'Sports', 'images/category/sports.jpg', '2025-06-02');
 
 -- --------------------------------------------------------
 
@@ -117,18 +110,18 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`id`, `article_id`, `user_id`, `content`, `create_at`) VALUES
 (1, 2, 4, 'This article is really helpful', '2025-04-01'),
 (2, 2, 3, 'I agree', '2025-04-01'),
-(3, 1, 4, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2025-04-01'),
-(4, 3, 3, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2025-04-02'),
-(12, 5, 3, '66', '2025-04-11'),
-(13, 3, 3, '000', '2025-04-11'),
-(14, 1, 4, '1', '2025-04-11'),
-(15, 4, 4, '2222', '2025-04-11'),
-(16, 1, 16, '2', '2025-04-11'),
-(17, 1, 16, 't', '2025-04-12'),
-(18, 1, 3, '2', '2025-04-12'),
-(20, 17, 16, '1', '2025-04-14'),
-(21, 16, 16, '2', '2025-04-14'),
-(22, 5, 16, '2', '2025-04-15');
+(3, 1, 4, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2025-06-01'),
+(4, 3, 3, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '2025-06-02'),
+(12, 5, 3, '66', '2025-06-11'),
+(13, 3, 3, '000', '2025-06-11'),
+(14, 1, 4, '1', '2025-06-11'),
+(15, 4, 4, '2222', '2025-06-11'),
+(16, 1, 16, '2', '2025-06-11'),
+(17, 1, 16, 't', '2025-06-12'),
+(18, 1, 3, '2', '2025-06-12'),
+(20, 17, 16, '1', '2025-06-14'),
+(21, 16, 16, '2', '2025-06-14'),
+(22, 5, 16, '2', '2025-06-15');
 
 -- --------------------------------------------------------
 
@@ -153,12 +146,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `phone`, `password`, `image`, `role`, `create_at`) VALUES
-(3, 'john', 'John Doeha', 'john@example.com', '12322222558', '$2a$10$FZSLpBWiHgc39CnT6ozDme/nm/alEwuPvxDGyv2JFlySEeMwa/9Cu', 'images/user/user_3_1744449905612.jpg', 'user', '2025-04-03'),
-(4, 'mary', 'Mary Jane', 'mary@example.com', '123456789', '$2a$10$IJKG4dtZUYqll/I3IqDSvOLRkjYIGzP6fTNu51OV94wxbb0pOYc3a', 'images/user/avatar.png', 'user', '2025-04-03'),
-(6, 'phillips', NULL, 'phillips@gmail.com', NULL, '$2y$10$Jd3k1WCXJwWBBxdfHB7Fnu0r4vC2VOLNu2K8SEIeVPk3LzFFX/xaS', 'images/user/avatar.png', 'user', '2025-04-06'),
-(16, 'tuananh', 'tuan anh', '64cntt.ttanh@aptech.vn', '0966436204', '$2a$10$eMsg2J0RfgtPkuKQCBuLT.kmmWuih/C6Az87GDadPthyAYN2LjM4u', 'images/user/user_16_1744398102215.jpg', 'user', '2025-04-10'),
-(19, 'admin', 'TDA', 'admin@gmail.com', '0123456789', '$2a$10$A.lLjsvACeuQvAYfbnR45uFequ23SOwehNwwfqqefWH5tEaVVJLSO', 'images/user/user.png', 'admin', '2025-04-13'),
-(20, 'admin1', 'TTA', 'admin1@gmail.com', NULL, '$2a$10$Wp6KrT4LhXpgc3mCwc5lA.ChbTFtkkpkxxG038FDdYfrDlyTzvEzi', 'images/user/avatar.png', 'admin', '2025-04-13');
+(3, 'john', 'John Doeha', 'john@example.com', '12322222558', '$2a$10$FZSLpBWiHgc39CnT6ozDme/nm/alEwuPvxDGyv2JFlySEeMwa/9Cu', 'images/user/user_3_1744449905612.jpg', 'user', '2025-06-03'),
+(4, 'mary', 'Mary Jane', 'mary@example.com', '123456789', '$2a$10$IJKG4dtZUYqll/I3IqDSvOLRkjYIGzP6fTNu51OV94wxbb0pOYc3a', 'images/user/avatar.png', 'user', '2025-06-03'),
+(6, 'phillips', NULL, 'phillips@gmail.com', NULL, '$2y$10$Jd3k1WCXJwWBBxdfHB7Fnu0r4vC2VOLNu2K8SEIeVPk3LzFFX/xaS', 'images/user/avatar.png', 'user', '2025-06-06'),
+(16, 'tuananh', 'tuan anh', '64cntt.ttanh@aptech.vn', '0966436204', '$2a$10$eMsg2J0RfgtPkuKQCBuLT.kmmWuih/C6Az87GDadPthyAYN2LjM4u', 'images/user/user_16_1744398102215.jpg', 'user', '2025-06-10'),
+(19, 'admin', 'TDA', 'admin@gmail.com', '0123456789', '$2a$10$A.lLjsvACeuQvAYfbnR45uFequ23SOwehNwwfqqefWH5tEaVVJLSO', 'images/user/user.png', 'admin', '2025-06-13'),
+(20, 'admin1', 'TTA', 'admin1@gmail.com', NULL, '$2a$10$Wp6KrT4LhXpgc3mCwc5lA.ChbTFtkkpkxxG038FDdYfrDlyTzvEzi', 'images/user/avatar.png', 'admin', '2025-06-13');
 
 --
 -- Indexes for dumped tables
